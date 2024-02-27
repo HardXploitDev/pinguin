@@ -1,0 +1,37 @@
+{
+  "name": "pinguin",
+  "version": "0.0.1",
+  "description": "Official repository of Pinguin (Discord BOT), an OPEN SOURCE and a perfect chatbot to give a friendly atmosphere to your server, and an image ai to generate epic images, like a pixelated penguin?",
+  "main": "src/bot/index.js",
+  "type": "module",
+  "scripts": {
+    "init": "node src/cli/start.js",
+    "startDev": "nodemon src/bot/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HardXploitDev/pinguin.git"
+  },
+  "keywords": [
+    "chatbot",
+    "ai",
+    "discord",
+    "discord.js",
+    "discord-bot"
+  ],
+  "author": "HardXploit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HardXploitDev/pinguin/issues"
+  },
+  "homepage": "https://github.com/HardXploitDev/pinguin#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "cli-table3": "^0.6.3",
+    "discord.js": "^14.12.1",
+    "prompts": "^2.4.2"
+  }
+}
