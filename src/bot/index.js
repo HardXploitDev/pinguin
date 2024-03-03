@@ -3,6 +3,7 @@ import fs from 'fs/promises'; // Use fs.promises for async file operations
 import path from 'path';
 import { pathToFileURL } from 'url';
 import configJSON from '../../config.json' assert { type: 'json' };
+import deployCommands from './deployCommands.js';
 
 const client = new Client({ intents: 65027 });
 
@@ -15,10 +16,6 @@ for (const file of commandFiles) {
   const absoluteFile = path.join(commandsPath, file);
   const command = await import(pathToFileURL(absoluteFile));
   client.commands.set(command.data.name, command);
-}
-
-export function getCommandsArray() {
-  return client.commands.map((command) => command.data.name);
 }
 
 const eventsPath = path.resolve("src", "bot", "events");
@@ -34,4 +31,5 @@ for (const file of eventFiles) {
   }
 }
 
-client.login(configJSON.login);
+deployCommands();
+client.login(configJSON.token);

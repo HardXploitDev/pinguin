@@ -1,8 +1,9 @@
 import { Events } from "discord.js";
+import { errorLog } from "../../cli/functions/logger.js";
 
 export const name = Events.InteractionCreate;
 export const once = false;
-export async function execute(interaction) {
+export async function execute(interaction, client) {
 	if (!interaction.isChatInputCommand()) return;
 
 	const command = interaction.client.commands.get(interaction.commandName);
@@ -13,9 +14,11 @@ export async function execute(interaction) {
 	}
 
 	try {
-		await command.execute(interaction);
+		await command.execute(interaction, client);
 	} catch (error) {
-		console.error(error);
+		console.log(`${errorLog()}
+		${error}
+		`)
 		if (interaction.replied || interaction.deferred) {
 			await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
 		} else {
